@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { About, Footer, Project, Work, Testimonial, Header } from "./container/containerExports";
 import Navbar from "./components/Navbar/Navbar"
 import { useQuery } from '@tanstack/react-query';
-import { fetchWorks, fetchTestimonials, fetchAbouts, fetchSkills, fetchProjectType } from "./client"
+import { fetchWorks, fetchTestimonials, fetchAbouts, fetchSkills, fetchProjectType, fetchExperiencData } from "./client"
 import "./App.scss"
 import "./index.css"
 import MainLoader from './MainLoader';
@@ -45,7 +45,6 @@ function App() {
         queryFn: fetchAbouts,
         staleTime: Infinity,
         onSuccess: () => setDataLoaded(true),
-
     })
 
     const skillsData = useQuery({
@@ -58,6 +57,13 @@ function App() {
     const projectTypeData = useQuery({
         queryKey: ['projectType'],
         queryFn: fetchProjectType,
+        staleTime: Infinity,
+        onSuccess: () => setDataLoaded(true),
+    })
+
+    const experienceData = useQuery({
+        queryKey: ['experiences'],
+        queryFn: fetchExperiencData,
         staleTime: Infinity,
         onSuccess: () => setDataLoaded(true),
     })
@@ -75,6 +81,7 @@ function App() {
         AboutData.isSuccess,
         skillsData.isSuccess,
         projectTypeData.isSuccess,
+        experienceData.isSuccess
     ].every(Boolean);
 
     if (showSplash) {
@@ -92,7 +99,7 @@ function App() {
                 <Navbar />
                 <Header />
                 <About element={AboutData.data} />
-                <Work element={skillsData.data} />
+                <Work element={skillsData.data} workelement={experienceData.data} />
                 <Project element={projectData.data} btnTypes={projectTypeData?.data} />
                 <Testimonial element={testimonialData.data} />
                 <Footer />

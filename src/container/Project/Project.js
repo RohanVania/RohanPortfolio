@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Project.scss"
 import AppWrapper from '../../wrapper/AppWrapper'
 import { motion } from 'framer-motion'
@@ -12,10 +12,14 @@ function Project({ element, btn }) {
 
     const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
 
+    useEffect(() => {
+        setFilterProject(element.filter((el) => el.tags.includes('All')))
+    }, [])
 
 
     const handleFilter = (item) => {
-        const customItem = item.replace(" ", "");
+        const customItem = item.replace(" ", " ");
+        console.log(customItem)
         setActiveBtn(item);
         setAnimateCard([{ y: 100, opacity: 0.5 }]);
 
@@ -23,9 +27,10 @@ function Project({ element, btn }) {
             setAnimateCard([{ y: 0, opacity: 1 }]);
 
             if (item === 'All') {
-                setFilterProject(element);
+                setFilterProject(element.filter((el) => el.tags.includes(customItem)));
             } else {
                 setFilterProject(element.filter((el) => el.tags.includes(customItem)));
+                console.log(filterProject)
             }
         }, 500);
     };
@@ -56,13 +61,13 @@ function Project({ element, btn }) {
                     transition={{ duration: 1, ease: 'linear', delayChildren: 0.5 }}
                 >
                     {
-                        filterProject === null ? element?.map((el, indx) => {
-                            return <ProjectBox key={indx} element={el} />
-                        }) :
-                            filterProject?.map((el, indx) => {
+                        // filterProject === null ? element?.map((el, indx) => {
+                        //     return <ProjectBox key={indx} element={el} />
+                        // }) :
+                        filterProject?.map((el, indx) => {
 
-                                return <ProjectBox key={indx} element={el} />
-                            })
+                            return <ProjectBox key={indx} element={el} />
+                        })
 
 
                     }
