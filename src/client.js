@@ -22,45 +22,52 @@ export async function fetchAbouts() {
 
 }
 
+export async function fetchExperiencData() {
+    const query = `*[_type=="experiences"]`
+    const ExperienceData = await client.fetch(query);
+    return ExperienceData;
+
+}
+
 export async function fetchSkills() {
     try {
         const query = `*[_type=="skills"]`
         const skillsData = await client.fetch(query);
         return skillsData
     }
-    catch(err){
+    catch (err) {
         console.log(err);
     }
 }
 
 export async function fetchTestimonials() {
-    try{
+    try {
         const query = `*[_type=="testimonials"]`
         const testimonialsData = await client.fetch(query);
         return testimonialsData;
     }
-    catch(err){
+    catch (err) {
         console.log(err);
     }
 }
 
 export async function fetchWorks() {
-    try{
+    try {
         const query = `*[_type=="works"]`
         const workData = await client.fetch(query);
         return workData
     }
-    catch(err){
+    catch (err) {
         console.log(err);
     }
 }
 
-export async function fetchProjectType(){
-    try{
-        const query=`*[_type=="projecttype"]`
-        const projectType=await client.fetch(query);
+export async function fetchProjectType() {
+    try {
+        const query = `*[_type=="projecttype"]`
+        const projectType = await client.fetch(query);
         return projectType
-    }catch(err){
+    } catch (err) {
         console.log(err);
     }
 }

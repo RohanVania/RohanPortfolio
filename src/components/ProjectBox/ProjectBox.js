@@ -1,6 +1,6 @@
 import { IoEye } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa";
-import {urlFor} from "../../client"
+import { urlFor } from "../../client"
 
 const ProjectBox = ({ element }) => {
 
@@ -14,11 +14,14 @@ const ProjectBox = ({ element }) => {
                             <IoEye className="tw-text-[40px] tw-p-[5px]" />
                         </a>
                     </div>
-                    <div className="tw-bg-[rgba(0,0,0,0.7)] tw-w-[48px] tw-aspect-square tw-rounded-full tw-flex tw-justify-center tw-items-center hover:tw-scale-[0.78] tw-duration-200">
-                        <a href={element?.codeLink} target="_blank"  rel="noreferrer" >
-                            <FaGithub className="tw-text-[35px] tw-p-[5px]" />
-                        </a>
-                    </div>
+                    {
+                        !element.codeLink === '' &&
+                        <div className="tw-bg-[rgba(0,0,0,0.7)] tw-w-[48px] tw-aspect-square tw-rounded-full tw-flex tw-justify-center tw-items-center hover:tw-scale-[0.78] tw-duration-200">
+                            <a href={element?.codeLink} target="_blank" rel="noreferrer" >
+                                <FaGithub className="tw-text-[35px] tw-p-[5px]" />
+                            </a>
+                        </div>
+                    }
                 </div>
             </div>
             <div className='tw-flex tw-flex-col tw-gap-y-3'>
@@ -27,7 +30,7 @@ const ProjectBox = ({ element }) => {
                     {element?.description}
                 </p>
             </div>
-        </div>
+        </div >
     )
 }
 

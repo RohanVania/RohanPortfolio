@@ -25,7 +25,7 @@ const scaleVariant = {
 const imagesIcon = [flutter, redux, react]
 
 function Header() {
-    
+
     return (
         <div id="home" className='app__header app__flex tw-flex-wrap   tw-overflow-hidden '>
 
@@ -49,7 +49,7 @@ function Header() {
 
                     <div className='tag-cmp app__flex'>
                         <p className='p-text'>Software Engineer</p>
-                        <p className='p-text'>Front End Developer</p>
+                        <p className='p-text'>Full Stack Developer</p>
                     </div>
 
                 </div>
@@ -62,7 +62,7 @@ function Header() {
                 transition={{ duration: 1, delayChildren: 1 }}
                 className='app__header-img tw-object-cover '
             >
-                <img src={profile} alt="profile-bg" className=' tw-bg-red-40  400:tw-mx-10'  />
+                <img src={profile} alt="profile-bg" className=' tw-bg-red-40  400:tw-mx-10' />
 
             </motion.div>
 
@@ -73,7 +73,7 @@ function Header() {
                 className='app__header-circles '
             >
                 {
-                    imagesIcon.map((data,indx) =>
+                    imagesIcon.map((data, indx) =>
                         <div key={indx} className='circle-cmp app__flex'>
                             <img src={data} alt={`circle-${indx}`} />
                         </div>
@@ -87,4 +87,4 @@ function Header() {
     )
 }
 
-export default AppWrapper(Header,'Home','')
+export default AppWrapper(Header, 'Home', '')
