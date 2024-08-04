@@ -21,11 +21,14 @@ function Footer() {
         errors
     } } = useForm()
 
+    // * function for sending Email
     const onSubmit = async (data) => {
         console.log(data)
         data.inquiry_name.trim();
         data?.your_message.trim();
 
+
+        // * Inititalization of email
         emailjs.init({
             publicKey: process.env.REACT_APP_EMAIL_JS,
             limitRate: {
