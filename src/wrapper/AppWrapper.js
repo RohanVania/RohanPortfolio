@@ -5,7 +5,7 @@ import SocialMedia from '../components/SocialMedia/SocialMedia'
 // This is Testing
 
 // Component that return another Component is Called Higher Order Component
-
+// *Higher Order Component
 const AppWrapper = (Component, idName, classNames, extraclassname, element) => function HOC({ element, btnTypes, workelement }) {
     return (
         <div id={idName} className={`app__container tw-overflow-hidden tw-pt-10    ${classNames}`}>
